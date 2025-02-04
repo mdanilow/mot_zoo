@@ -1,0 +1,9 @@
+[submodule "yolo_finn"]
+	path = yolo_finn
+	url = https://github.com/mdanilow/yolo_finn.git
+[submodule "sort"]
+	path = sort
+	url = https://github.com/mdanilow/sort
+[submodule "TrackEval"]
+	path = TrackEval
+	url = https://github.com/JonathonLuiten/TrackEval
