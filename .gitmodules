@@ -7,3 +7,6 @@
 [submodule "TrackEval"]
 	path = TrackEval
 	url = https://github.com/JonathonLuiten/TrackEval
+[submodule "MOSSE_fpga"]
+	path = MOSSE_fpga
+	url = https://github.com/mdanilow/MOSSE_fpga.git
