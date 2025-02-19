@@ -1,4 +1,5 @@
-TRACKERS_TO_EVAL="quantyolov8_4w4a_mot15_cl0"
+# TRACKERS_TO_EVAL="quantyolov8_4w4a_mot15_cl0"
+TRACKERS_TO_EVAL="floatyolov8n_640_cl0"
 TRACKERS_FOLDER=${PWD}/sort/output
 cd TrackEval
 python scripts/run_mot_challenge.py --SKIP_SPLIT_FOL True --METRICS CLEAR --BENCHMARK MOT15 --TRACKERS_FOLDER ${TRACKERS_FOLDER} --TRACKERS_TO_EVAL ${TRACKERS_TO_EVAL}
