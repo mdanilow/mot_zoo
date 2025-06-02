@@ -1,12 +1,12 @@
 [submodule "yolo_finn"]
 	path = yolo_finn
 	url = https://github.com/mdanilow/yolo_finn.git
-[submodule "sort"]
-	path = sort
-	url = https://github.com/mdanilow/sort
 [submodule "TrackEval"]
 	path = TrackEval
 	url = https://github.com/JonathonLuiten/TrackEval
 [submodule "MOSSE_fpga"]
 	path = MOSSE_fpga
 	url = https://github.com/mdanilow/MOSSE_fpga.git
+[submodule "dcf_mot"]
+	path = dcf_mot
+	url = git@github.com:mdanilow/dcf_mot.git
