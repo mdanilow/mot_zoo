@@ -5,7 +5,7 @@ import subprocess
 
 SEQUENCES_DIR = "/home/vision/danilowi/mot_zoo/yolo_finn/runs/detect/floatyolov8n_640_cl0"
 SOURCE_DIR = "/home/vision/danilowi/mot_zoo/yolo_finn/runs/detect/floatyolov8n_640_cl0/{}/features"
-DESTINATION_DIR = "/home/vision/danilowi/mot_zoo/yolo_finn/runs/detect/mot15dets/{}/features"
+DESTINATION_DIR = "/home/vision/danilowi/mot_zoo/yolo_finn/runs/detect/sortdets/{}/features"
 
 for seqname in os.listdir(SEQUENCES_DIR):
     print(seqname)
