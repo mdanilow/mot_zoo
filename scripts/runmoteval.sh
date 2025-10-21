@@ -1,6 +1,6 @@
 BENCHMARK="MOT17"
 # TRACKERS_TO_EVAL="quantyolov8_4w4a_mot15_cl0"
-TRACKERS_TO_EVAL="FastTracker_private"
+TRACKERS_TO_EVAL="fasttracker_mot17_pub"
 TRACKERS_FOLDER=${PWD}/dcf_mot/output
 # SINGLE_SEQUENCE="ETH-Sunnyday"
 SINGLE_SEQUENCE="None"

@@ -1,20 +1,34 @@
 # DETECTIONS="quantyolov8_4w4a_mot15_cl0"
 # DETECTIONS="floatyolov8n_640_cl0"
 # DETECTIONS="sortdets"
-# DETECTIONS="mot15dets"
 # DETECTIONS="floatyolov8n_640_cl0_mot17"
-DETECTIONS="mot17dets"
-# BENCHMARK="MOT15"
-BENCHMARK="MOT17"
-# DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT15/train"
-DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT17/train"
-NAME="base_sort"
+DETECTIONS="mot15dets"
+# DETECTIONS="mot17dets"
+
+BENCHMARK="MOT15"
+# BENCHMARK="MOT17"
+
+DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT15/train"
+# DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT17/train"
+
+NAME="test"
+
 CONFIG="configs/base_sort.json"
+
 # SINGLE_SEQUENCE="ETH-Sunnyday"
 # SINGLE_SEQUENCE="PETS09-S2L1"
 SINGLE_SEQUENCE="None"
+
+
+
+if [[ "${BENCHMARK}" == "MOT15" ]]; then
+    DET_SCORE_DIVISION=100
+else
+    DET_SCORE_DIVISION=1
+fi
+
 cd dcf_mot
-python sort.py --seq_path "../yolo_finn/runs/detect" --single_sequence ${SINGLE_SEQUENCE} --name ${NAME} --phase ${DETECTIONS} --config ${CONFIG} --debug_images ${DEBUG_IMAGES}
+python sort.py --seq_path "../yolo_finn/runs/detect" --single_sequence ${SINGLE_SEQUENCE} --name ${NAME} --phase ${DETECTIONS} --config ${CONFIG} --debug_images ${DEBUG_IMAGES} --det_score_division ${DET_SCORE_DIVISION}
 
 cd ../TrackEval
 TRACKERS_FOLDER=../dcf_mot/output
