@@ -11,9 +11,11 @@ BENCHMARK="MOT17"
 # DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT15/train"
 DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT17/train"
 
-NAME="test"
+NAME="params_search_dcf"
 
-CONFIG="configs/test.json"
+CONFIG="configs/fasttracker_dcf.json"
+
+PARAMS_SEARCH_CONFIG="configs/params_search/params_search_fasttracker_dcf.json"
 
 # SINGLE_SEQUENCE="ETH-Sunnyday"
 # SINGLE_SEQUENCE="PETS09-S2L1"
@@ -28,8 +30,8 @@ else
 fi
 
 cd dcf_mot
-python sort.py --detections_dir "../yolo_finn/runs/detect" --single_sequence ${SINGLE_SEQUENCE} --name ${NAME} --detections ${DETECTIONS} --config ${CONFIG} --debug_images ${DEBUG_IMAGES} --det_score_division ${DET_SCORE_DIVISION}
+python sort.py --params_search ${PARAMS_SEARCH_CONFIG} --detections_dir "../yolo_finn/runs/detect" --single_sequence ${SINGLE_SEQUENCE} --name ${NAME} --detections ${DETECTIONS} --config ${CONFIG} --debug_images ${DEBUG_IMAGES} --det_score_division ${DET_SCORE_DIVISION}
 
 cd ../TrackEval
-TRACKERS_FOLDER=../dcf_mot/output
-python scripts/run_mot_challenge.py --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER} --TRACKERS_TO_EVAL "${DETECTIONS}_${NAME}"
+TRACKERS_FOLDER=../dcf_mot/output/${NAME}
+python scripts/run_mot_challenge.py --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER}
