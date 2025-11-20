@@ -1,9 +1,13 @@
+# SPLIT_TO_EVAL="train"
+SPLIT_TO_EVAL="val_half"
+
 # DETECTIONS="quantyolov8_4w4a_mot15_cl0"
 # DETECTIONS="floatyolov8n_640_cl0"
 # DETECTIONS="sortdets"
 # DETECTIONS="floatyolov8n_640_cl0_mot17"
 # DETECTIONS="mot15dets"
-DETECTIONS="mot17dets"
+# DETECTIONS="mot17dets"
+DETECTIONS="yolox_mot17_val_half"
 
 # BENCHMARK="MOT15"
 BENCHMARK="MOT17"
@@ -16,8 +20,9 @@ NAME="test"
 CONFIG="configs/test.json"
 
 # SINGLE_SEQUENCE="ETH-Sunnyday"
-# SINGLE_SEQUENCE="PETS09-S2L1"
+# SINGLE_SEQUENCE="MOT17-02-FRCNN"
 SINGLE_SEQUENCE="None"
+
 
 
 
@@ -32,4 +37,4 @@ python sort.py --detections_dir "../yolo_finn/runs/detect" --single_sequence ${S
 
 cd ../TrackEval
 TRACKERS_FOLDER=../dcf_mot/output
-python scripts/run_mot_challenge.py --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER} --TRACKERS_TO_EVAL "${DETECTIONS}_${NAME}"
+python scripts/run_mot_challenge.py --SPLIT_TO_EVAL ${SPLIT_TO_EVAL} --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER} --TRACKERS_TO_EVAL "${DETECTIONS}_${NAME}"

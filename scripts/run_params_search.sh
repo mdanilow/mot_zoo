@@ -1,9 +1,13 @@
+# SPLIT_TO_EVAL="train"
+SPLIT_TO_EVAL="val_half"
+
 # DETECTIONS="quantyolov8_4w4a_mot15_cl0"
 # DETECTIONS="floatyolov8n_640_cl0"
 # DETECTIONS="sortdets"
 # DETECTIONS="floatyolov8n_640_cl0_mot17"
 # DETECTIONS="mot15dets"
-DETECTIONS="mot17dets"
+# DETECTIONS="mot17dets"
+DETECTIONS="yolox_mot17_val_half"
 
 # BENCHMARK="MOT15"
 BENCHMARK="MOT17"
@@ -11,9 +15,9 @@ BENCHMARK="MOT17"
 # DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT15/train"
 DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT17/train"
 
-NAME="params_search_dcf"
+NAME="params_search_bytetracker2_dcf_searchfurther_psr"
 
-CONFIG="configs/fasttracker_dcf.json"
+CONFIG="configs/test.json"
 
 PARAMS_SEARCH_CONFIG="configs/params_search/params_search_fasttracker_dcf.json"
 
@@ -34,4 +38,4 @@ python sort.py --params_search ${PARAMS_SEARCH_CONFIG} --detections_dir "../yolo
 
 cd ../TrackEval
 TRACKERS_FOLDER=../dcf_mot/output/${NAME}
-python scripts/run_mot_challenge.py --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER}
+python scripts/run_mot_challenge.py --SPLIT_TO_EVAL ${SPLIT_TO_EVAL} --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER}
