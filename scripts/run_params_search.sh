@@ -15,15 +15,19 @@ BENCHMARK="MOT17"
 # DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT15/train"
 DEBUG_IMAGES="/media/vision/1d6890f4-df75-4531-a044-f6d3d44d033d/Downloads/MOT17/train"
 
-NAME="params_search_bytetracker2_dcf_searchfurther_psr"
+# NAME="params_search_bytetracker2_dcf"
+NAME="params_search_bytetracker2_dcf-crisp8"
 
-CONFIG="configs/test.json"
+CONFIG="configs/bytetracker2_dcf.json"
 
-PARAMS_SEARCH_CONFIG="configs/params_search/params_search_fasttracker_dcf.json"
+PARAMS_SEARCH_CONFIG="configs/params_search/params_search_dcf.json"
 
 # SINGLE_SEQUENCE="ETH-Sunnyday"
 # SINGLE_SEQUENCE="PETS09-S2L1"
 SINGLE_SEQUENCE="None"
+
+# METRICS="CLEAR"
+METRICS="HOTA"
 
 
 
@@ -38,4 +42,4 @@ python sort.py --params_search ${PARAMS_SEARCH_CONFIG} --detections_dir "../yolo
 
 cd ../TrackEval
 TRACKERS_FOLDER=../dcf_mot/output/${NAME}
-python scripts/run_mot_challenge.py --SPLIT_TO_EVAL ${SPLIT_TO_EVAL} --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS CLEAR --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER}
+python scripts/run_mot_challenge.py --SPLIT_TO_EVAL ${SPLIT_TO_EVAL} --SINGLE_SEQUENCE ${SINGLE_SEQUENCE} --SKIP_SPLIT_FOL False --METRICS ${METRICS} --BENCHMARK ${BENCHMARK} --TRACKERS_FOLDER ${TRACKERS_FOLDER}

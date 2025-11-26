@@ -3,7 +3,7 @@ import shutil
 from os.path import join
 import subprocess
 
-SOURCE_DIR = "/home/vision/danilowi/mot_zoo/dcf_mot/output/fasttracker_mot17_pub/data"
+SOURCE_DIR = "/home/vision/danilowi/mot_zoo/dcf_mot/output/yolox_mot17_test_THETEST/data"
 
 for seqname in os.listdir(SOURCE_DIR):
     print(seqname)
